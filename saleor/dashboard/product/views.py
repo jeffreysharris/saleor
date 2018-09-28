@@ -106,6 +106,7 @@ def product_create(request, type_pk):
     product_type = get_object_or_404(ProductType, pk=type_pk)
     create_variant = not product_type.has_variants
     product = Product()
+    product.seller = request.user
     product.product_type = product_type
     product_form = forms.ProductForm(request.POST or None, instance=product)
     if create_variant:
