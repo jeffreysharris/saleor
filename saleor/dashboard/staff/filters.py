@@ -11,7 +11,8 @@ from ..forms import PermissionMultipleChoiceField
 SORT_BY_FIELDS = (
     ('email', 'email'),
     ('default_billing_address__first_name', 'name'),
-    ('default_billing_address__city', 'location'))
+    ('default_billing_address__city', 'location'),
+    ('is_seller', 'seller'))
 
 SORT_BY_FIELDS_LABELS = {
     'email': pgettext_lazy(
@@ -19,7 +20,9 @@ SORT_BY_FIELDS_LABELS = {
     'default_billing_address__first_name': pgettext_lazy(
         'Customer list sorting option', 'name'),
     'default_billing_address__city': pgettext_lazy(
-        'Customer list sorting option', 'location')}
+        'Customer list sorting option', 'location'),
+    'seller': pgettext_lazy(
+        'Customer list sorting option', 'seller')}
 
 IS_SELLER_CHOICES = (
     ('1', pgettext_lazy('Is seller filter choice', 'Seller')),

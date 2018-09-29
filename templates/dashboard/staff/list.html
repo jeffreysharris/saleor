@@ -47,6 +47,9 @@
 
                   {% trans "Location" context "Staff members table header" as label %}
                   {% sorting_header 'location' label %}
+
+                  {% trans "Seller" context "Staff members table header" as label %}
+                  {% sorting_header 'seller' label %}
                 </tr>
               </thead>
               <tbody>
@@ -69,6 +72,9 @@
                         {% else %}
                           -
                         {% endif %}
+                      </td>
+                      <td>
+                        {{ user.is_seller }}
                       </td>
                     {% endwith %}
                   </tr>
