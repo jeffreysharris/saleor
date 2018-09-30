@@ -26,7 +26,13 @@ from .filters import ProductAttributeFilter, ProductFilter, ProductTypeFilter
 @staff_member_required
 @permission_required('product.manage_products')
 def product_list(request):
-    products = Product.objects.prefetch_related('images')
+    user = request.user
+    if user.is_seller:
+        # print("User is seller")
+        products = Product.objects.filter(seller = user).prefetch_related('images')
+    else:
+        # print("User is not a seller")
+        products = Product.objects.prefetch_related('images')
     products = products.order_by('name')
     product_types = ProductType.objects.all()
     product_filter = ProductFilter(request.GET, queryset=products)
